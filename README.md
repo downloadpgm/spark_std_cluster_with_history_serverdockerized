@@ -1,0 +1,2 @@
+# spark_std_cluster_with_history_serverdockerized
+spark_std_cluster_with_history_server
