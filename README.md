@@ -41,7 +41,8 @@ ID             NAME          MODE         REPLICAS   IMAGE                      
 9sjce1afjaq2   spk_hdpmst    replicated   1/1        mkenjis/ubhdp_img:latest          
 d8zste0gyx96   spk_spk1      replicated   1/1        mkenjis/ubspkcluster_img:latest   
 ekptsevz8x7g   spk_spk2      replicated   1/1        mkenjis/ubspkcluster_img:latest   
-riqot03ma5h1   spk_spk_mst   replicated   1/1        mkenjis/ubspkcluster_img:latest   *:4040->4040/tcp, *:8080->8080/tcp, *:18080->18080/tcp```
+riqot03ma5h1   spk_spk_mst   replicated   1/1        mkenjis/ubspkcluster_img:latest   *:4040->4040/tcp, *:8080->8080/tcp, *:18080->18080/tcp
+```
 
 6. in hadoop master node, create a spark-logs HDFS directory
 ```shell
