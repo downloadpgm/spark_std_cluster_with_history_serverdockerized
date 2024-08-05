@@ -50,26 +50,7 @@ $ docker container exec -it <spk_hdpmst ID> bash
 $ hdfs dfs -mkdir /spark-logs
 ```
 
-7. in spark master node, copy core-site.xml and hdfs-site.xml from hadoop master into $SPARK_HOME/conf
-```shell
-$ scp root@hdpmst:/usr/local/hadoop-2.7.3/etc/hadoop/core-site.xml .
-Warning: Permanently added 'hdpmst,10.0.1.11' (ECDSA) to the list of known hosts.
-core-site.xml                                                              100%  137    78.1KB/s   00:00    
-$ scp root@hdpmst:/usr/local/hadoop-2.7.3/etc/hadoop/hdfs-site.xml .
-hdfs-site.xml                                                              100%  310   292.6KB/s   00:00
-```
-
-8. copy *.xml files to spk1 and spk2
-```shell
-$ scp *.xml root@spk1:/usr/local/spark-2.3.2-bin-hadoop2.7/conf
-core-site.xml                                                              100%  137    93.1KB/s   00:00    
-hdfs-site.xml                                                              100%  310   174.1KB/s   00:00    
-$ scp *.xml root@spk2:/usr/local/spark-2.3.2-bin-hadoop2.7/conf
-core-site.xml                                                              100%  137   135.3KB/s   00:00    
-hdfs-site.xml                                                              100%  310   275.8KB/s   00:00                                                              100%  285    59.8KB/s   00:00
-```
-
-9. edit spark-defaults.conf and add following lines
+7. edit spark-defaults.conf and add following lines
 ```shell
 $ vi spark-defaults.conf
 
@@ -79,7 +60,7 @@ spark.history.fs.logDirectory  hdfs://hdpmst:9000/spark-logs
 
 ```
 
-10. start spark history server and access port 18080 as shown
+8. start spark history server and access port 18080 as shown
 ```shell
 $ start-history-server.sh
 starting org.apache.spark.deploy.history.HistoryServer, logging to /usr/local/spark-2.3.2-bin-hadoop2.7/logs/spark--org.apache.spark.deploy.history.HistoryServer-1-939f7f90538d.out
@@ -96,7 +77,7 @@ $ tail -f /usr/local/spark-2.3.2-bin-hadoop2.7/logs/spark--org.apache.spark.depl
 2023-09-24 15:45:59 INFO  HistoryServer:54 - Bound HistoryServer to 0.0.0.0, and started at http://939f7f90538d:18080
 ```
 
-11. start spark-shell in spark cluster mode
+9. start spark-shell in spark cluster mode
 ```shell
 $ spark-shell --master spark://<spk_hostname>:7077
 2021-12-13 15:09:50 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
